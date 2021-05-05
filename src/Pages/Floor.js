@@ -216,122 +216,122 @@ export const Floor = () => {
             styleProps={{ ...styleProps, left: 440, top: 200 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo15"}
             source1={kl1}
             source2={kl1g}
             styleProps={{ ...styleProps, left: 378, top: 257 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo16"}
             source1={kl2}
             source2={kl2g}
             styleProps={{ ...styleProps, left: 330, top: 262 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo17"}
             source1={kl3}
             source2={kl3g}
             styleProps={{ ...styleProps, left: 293, top: 262 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo18"}
             source1={kl4}
             source2={kl4g}
             styleProps={{ ...styleProps, left: 220, top: 262 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo19"}
             source1={kl5}
             source2={kl5g}
             styleProps={{ ...styleProps, left: 156, top: 250 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo20"}
             source1={kl6}
             source2={kl6g}
             styleProps={{ ...styleProps, left: 194, top: 250 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo21"}
             source1={ka1}
             source2={ka1g}
             styleProps={{ ...styleProps, left: 303, top: 127 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo22"}
             source1={ka2}
             source2={ka2g}
             styleProps={{ ...styleProps, left: 220, top: 127 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo23"}
             source1={ka3}
             source2={ka3g}
             styleProps={{ ...styleProps, left: 156, top: 127 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo24"}
             source1={l1}
             source2={l1g}
             styleProps={{ ...styleProps, left: 1000, top: 200 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo25"}
             source1={l2}
             source2={l2g}
             styleProps={{ ...styleProps, left: 1049, top: 200 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo26"}
             source1={ll1}
             source2={ll1g}
             styleProps={{ ...styleProps, left: 1143, top: 255 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo27"}
             source1={ll2}
             source2={ll2g}
             styleProps={{ ...styleProps, left: 1205, top: 260 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo28"}
             source1={ll3}
             source2={ll3g}
             styleProps={{ ...styleProps, left: 1259, top: 260 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo29"}
             source1={ll5}
             source2={ll5g}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo30"}
             source1={ll4}
             source2={ll4g}
             styleProps={{ ...styleProps, left: 1293, top: 260 }}
           />
 
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo31"}
             source1={ll6}
             source2={ll6g}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo32"}
             source1={la1}
             source2={la1g}
             styleProps={{ ...styleProps, left: 1143, top: 127 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo33"}
             source1={la2}
             source2={la2g}
             styleProps={{ ...styleProps, left: 1280, top: 127 }}
           />
           <IstabasAttels
-            alt={"logo14"}
+            alt={"logo34"}
             source1={la3}
             source2={la3g}
             styleProps={{ ...styleProps, left: 1360, top: 127 }}
