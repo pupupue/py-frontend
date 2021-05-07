@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { CardBasic } from "../Components/CardBasic";
 import { IstabasAttels } from "../Components/IstabasAttels";
 import { Row } from "../UI/Row";
+import { CellData } from "../Components/CellData"
 //Middle
 import ka1 from "../Restes_bildes/1stavs/ka1.png";
 import kl1 from "../Restes_bildes/1stavs/kl1.png";
@@ -55,6 +56,7 @@ export const Floor1 = () => {
           <div
             style={{ height: 490, width: 1120, backgroundColor: "white" }}
           ></div>
+          <CellData>Data</CellData>
           <IstabasAttels
             alt={"logo1"}/**Done */
             source1={ka1}

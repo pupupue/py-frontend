@@ -3,6 +3,7 @@ import { Sidenav } from "../UI/Sidenav";
 import { SidenavButton } from "../Components/SidenavButton";
 import { useHistory } from "react-router-dom";
 import { CardBasic_user } from "../Components/CardBasic_user";
+import noPhoto from "../Restes_bildes/no_image.png"
 
 export const SidenavContent = () => {
   const history = useHistory();
@@ -20,7 +21,7 @@ export const SidenavContent = () => {
         text="Maintenance "
         onClick={() => history.push("/Maintenance")}
       />
-      <CardBasic_user> Username</CardBasic_user>
+      <CardBasic_user> <h1>Username</h1><h2>Security level</h2><h2>ID</h2> <img style={{Transform:"scale(0.6)"}} src={noPhoto} /></CardBasic_user>
     </Sidenav>
   );
 };
