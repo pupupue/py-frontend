@@ -12,7 +12,12 @@ import { Content } from "./UI/Content";
 import { SidenavContent as Sidenav } from "./components/SidenavContent";
 import { Routes } from "./Routes";
 
+/**
+ * App has pages Login Register ect
+ */
 function App() {
+  // logged in state ? am i logged in or not
+  const [isAuthenticated, setisAuthenticated] = useState(true);
   const [articles, setArticles] = useState([]);
   const [editArticle, setEditArticle] = useState(null);
   const [token, setToken, removeToken] = useCookies(["mytoken"]);
@@ -75,17 +80,21 @@ function App() {
     setArticles(new_articles);
   };
 
-  const logoutBtn = () => {
+  const onLogout = () => {
     removeToken(["mytoken"]);
   };
 
   return (
     <div className="App">
       <WholeApp>
-        <Header {...logoutBtn}/>
+        <Header onLogout={onLogout} />
         <Main>
-          <Content><Routes/></Content>
-          <Sidenav />
+          <Content>
+            <Routes
+              auth={{ isAuthenticated: isAuthenticated, loading: false }}
+            />
+          </Content>
+          {isAuthenticated && <Sidenav />}
         </Main>
       </WholeApp>
     </div>
