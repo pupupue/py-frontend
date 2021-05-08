@@ -1,0 +1,22 @@
+.header__button {
+  float:right;
+  position: right;
+  width: 8%;
+  height: 3rem;
+  margin-top: 1rem;
+  margin-bottom: -0.5rem;
+  transition: all 0.25s;
+  overflow: hidden;
+}
+
+.header__button:hover {
+  cursor: pointer;
+  background-color: #5eac1e;
+}
+.header__button--text {
+  display: flex;
+  align-items: right;
+  font-size: 2rem;
+  text-transform: uppercase;
+  }
+
