@@ -4,7 +4,7 @@ import { Time } from "../components/Time";
 import { HeaderButton } from "../components/HeaderButton";
 import { useHistory } from "react-router-dom";
 
-export const HeaderContent = ({ onLogout }) => {
+export const HeaderContent = ({ onLogout, auth: { isAuthenticated } }) => {
   const history = useHistory();
   return (
     <Header>
@@ -12,8 +12,7 @@ export const HeaderContent = ({ onLogout }) => {
       <div style={{ width: 1500, alignItems: "center", marginLeft: "auto" }}>
         <Time />
       </div>
-
-      <HeaderButton text="LOGOUT" onClick={onLogout} />
+      {isAuthenticated && <HeaderButton text="LOGOUT" onClick={onLogout} />}
     </Header>
   );
 };

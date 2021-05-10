@@ -1,25 +1,28 @@
-
-from .models import Article
-from .serializers import ArticleSerializer, UserSerializer
+from .models import Article, Cell
+from .serializers import ArticleSerializer, UserSerializer, CellSerializer
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 
 
-
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = [IsAuthenticated]
-    authentication_classes = (TokenAuthentication,)
+    authentication_classes = (TokenAuthentication, )
+
+
+class CellViewSet(viewsets.ModelViewSet):
+    queryset = Cell.objects.all()
+    serializer_class = CellSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = (TokenAuthentication, )
 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-
 
 
 '''
@@ -32,9 +35,6 @@ class ArticleViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
     serializer_class = ArticleSerializer
 
 '''
-
-
-
 '''
 class ArticleViewSet(viewsets.ViewSet):
 
@@ -206,20 +206,3 @@ def article_details(request, pk):
 
 
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

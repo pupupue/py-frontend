@@ -36,7 +36,7 @@ export const Routes = ({ auth }) => {
         component={Maintenance}
         auth={auth}
       />
-      {/* last resort redirect to login */}
+      <PrivateRoute path="*" component={Dashboard} auth={auth} />
     </Switch>
   );
 };

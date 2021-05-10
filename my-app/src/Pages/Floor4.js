@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardBasic } from "../components/CardBasic";
-import { IstabasAttels } from "../components/IstabasAttels";
+import { IstabasAttels, Popup } from "../components/IstabasAttels";
 import { Row } from "../UI/Row";
 //Middle
 import bottom from "../Restes_bildes/balts.png";
@@ -16,18 +16,16 @@ import k2g from "../Restes_bildes/3stavs/kreisa2g.png";
 import k3g from "../Restes_bildes/3stavs/kreisa_istaois_3g.png";
 import k4g from "../Restes_bildes/3stavs/kreisa3g.png";
 //Lower left
-import kl1 from "../Restes_bildes/kreisa_leja_2.png";
-import kl2 from "../Restes_bildes/kreisa_leja_3.png";
-import kl3 from "../Restes_bildes/kreisa_leja_4.png";
-import kl4 from "../Restes_bildes/kreisa_leja_5.png";
-import kl5 from "../Restes_bildes/3stavs/kreisa_leja_pedejais.png";
-import kl6 from "../Restes_bildes/3stavs/kreisa_apaksa_small.png";
-import kl1g from "../Restes_bildes/3stavs/kreisa_leja_2g.png";
-import kl2g from "../Restes_bildes/3stavs/kreisa_leja_3g.png";
-import kl3g from "../Restes_bildes/3stavs/kreisa_leja_4g.png";
-import kl4g from "../Restes_bildes/3stavs/kreisa_leja_5g.png";
-import kl5g from "../Restes_bildes/3stavs/kreisa_leja_pedejaisg.png";
-import kl6g from "../Restes_bildes/3stavs/kreisa_apaksa_smallg.png";
+import kl1 from "../Restes_bildes/4stavs/ka1.png";
+import kl2 from "../Restes_bildes/4stavs/ka2.png";
+import kl3 from "../Restes_bildes/4stavs/ka3.png";
+import kl4 from "../Restes_bildes/4stavs/ka.png";
+import kl5 from "../Restes_bildes/4stavs/kasmall.png";
+import kl1g from "../Restes_bildes/4stavs/ka1g.png";
+import kl2g from "../Restes_bildes/4stavs/ka2g.png";
+import kl3g from "../Restes_bildes/4stavs/ka3g.png";
+import kl4g from "../Restes_bildes/4stavs/kag.png";
+import kl5g from "../Restes_bildes/4stavs/kasmallg.png";
 //upper left
 import ka1 from "../Restes_bildes/kreisa_augsa_3.png";
 import ka2 from "../Restes_bildes/kreisa_augsa_2.png";
@@ -54,23 +52,24 @@ import ll4g from "../Restes_bildes/3stavs/laba_leja_4g.png";
 import ll5g from "../Restes_bildes/3stavs/laba_leja_5g.png";
 import ll6g from "../Restes_bildes/3stavs/laba_apaksa_smallg.png";
 //upper right
-import la1 from'../Restes_bildes/laba_augsa_1.png';
-import la2 from'../Restes_bildes/laba_augsa_2.png';
-import la3 from'../Restes_bildes/laba_augsa_3.png';
-import la1g from'../Restes_bildes/3stavs/laba_augsa_1g.png';
-import la2g from'../Restes_bildes/3stavs/laba_augsa_2g.png';
-import la3g from'../Restes_bildes/3stavs/laba_augsa_3g.png';
-
+import la1 from "../Restes_bildes/laba_augsa_1.png";
+import la2 from "../Restes_bildes/laba_augsa_2.png";
+import la3 from "../Restes_bildes/laba_augsa_3.png";
+import la1g from "../Restes_bildes/3stavs/laba_augsa_1g.png";
+import la2g from "../Restes_bildes/3stavs/laba_augsa_2g.png";
+import la3g from "../Restes_bildes/3stavs/laba_augsa_3g.png";
 
 export const Floor4 = () => {
   const param = useParams();
-  const { id } = param;
+  const [isOpen, setIsOpen] = useState(false);
+  const [HoveredNameState, setHoveredNameState] = useState("");
   useEffect(() => {
     // api call
     console.log("also i call something to python");
-    console.log(id);
-  }, [id]);
-
+  }, []);
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
   const styleProps = {
     position: "absolute",
     transition: "all 0.25s",
@@ -79,10 +78,14 @@ export const Floor4 = () => {
     <>
       <Row>
         <CardBasic>
-          <div style={{ textSizeAdjust: "2rem" }}>This is Floor {id} plan</div>
-          <div style={{height: 400, width: 1420,backgroundColor:"white"}}></div>
+          <div style={{ textSizeAdjust: "2rem" }}>This is Floor 4 plan</div>
+          <div
+            style={{ height: 400, width: 1420, backgroundColor: "white" }}
+          ></div>
           <IstabasAttels
             alt={"logo1"}
+            cellID="24"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -94,6 +97,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo2"}
+            cellID="21"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -105,6 +110,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo3"}
+            cellID="19"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -116,6 +123,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo4"}
+            cellID="17"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -127,6 +136,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo5"}
+            cellID="16"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -138,6 +149,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo6"}
+            cellID="15"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -149,6 +162,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo7"}
+            cellID="14"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -160,6 +175,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo8"}
+            cellID="13"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -171,6 +188,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo9"}
+            cellID="12"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -182,6 +201,8 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo10"}
+            cellID="9"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -194,120 +215,153 @@ export const Floor4 = () => {
 
           <IstabasAttels
             alt={"logo11"}
+            cellID="18"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={k1}
             source2={k1g}
             styleProps={{ ...styleProps, left: 645, top: 200 }}
           />
           <IstabasAttels
             alt={"logo12"}
+            cellID="20"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={k2}
             source2={k2g}
             styleProps={{ ...styleProps, left: 615, top: 200 }}
           />
           <IstabasAttels
             alt={"logo13"}
+            cellID="22"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={k3}
             source2={k3g}
             styleProps={{ ...styleProps, left: 542, top: 200 }}
           />
           <IstabasAttels
             alt={"logo14"}
+            cellID="23"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={k4}
             source2={k4g}
             styleProps={{ ...styleProps, left: 440, top: 200 }}
           />
           <IstabasAttels
             alt={"logo15"}
+            cellID="26"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={kl1}
             source2={kl1g}
-            styleProps={{ ...styleProps, left: 378, top: 257 }}
+            styleProps={{ ...styleProps, left: 230, top: 262 }}
           />
           <IstabasAttels
             alt={"logo16"}
+            cellID="27"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={kl2}
             source2={kl2g}
-            styleProps={{ ...styleProps, left: 330, top: 262 }}
+            styleProps={{ ...styleProps, left: 338, top: 262 }}
           />
           <IstabasAttels
             alt={"logo17"}
+            cellID="28"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={kl3}
             source2={kl3g}
-            styleProps={{ ...styleProps, left: 293, top: 262 }}
+            styleProps={{ ...styleProps, left: 383, top: 262 }}
           />
           <IstabasAttels
             alt={"logo18"}
+            cellID="32"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={kl4}
             source2={kl4g}
-            styleProps={{ ...styleProps, left: 220, top: 262 }}
+            styleProps={{ ...styleProps, left: 156, top: 262 }}
           />
           <IstabasAttels
             alt={"logo19"}
+            cellID="30"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={kl5}
             source2={kl5g}
-            styleProps={{ ...styleProps, left: 156, top: 250 }}
+            styleProps={{ ...styleProps, left: 190, top: 262 }}
           />
-          <IstabasAttels
-            alt={"logo20"}
-            source1={kl6}
-            source2={kl6g}
-            styleProps={{ ...styleProps, left: 194, top: 250 }}
-          />
+
           <IstabasAttels
             alt={"logo21"}
+            cellID="25"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ka1}
             source2={ka1g}
             styleProps={{ ...styleProps, left: 303, top: 127 }}
           />
           <IstabasAttels
             alt={"logo22"}
+            cellID="29"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ka2}
             source2={ka2g}
             styleProps={{ ...styleProps, left: 220, top: 127 }}
           />
           <IstabasAttels
             alt={"logo23"}
+            cellID="31"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ka3}
             source2={ka3g}
             styleProps={{ ...styleProps, left: 156, top: 127 }}
           />
           <IstabasAttels
             alt={"logo24"}
+            cellID="11"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={l1}
             source2={l1g}
             styleProps={{ ...styleProps, left: 1000, top: 200 }}
           />
           <IstabasAttels
             alt={"logo25"}
+            cellID="10"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={l2}
             source2={l2g}
             styleProps={{ ...styleProps, left: 1049, top: 200 }}
           />
           <IstabasAttels
             alt={"logo26"}
+            cellID="7"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ll1}
             source2={ll1g}
             styleProps={{ ...styleProps, left: 1143, top: 255 }}
           />
           <IstabasAttels
             alt={"logo27"}
+            cellID="6"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ll2}
             source2={ll2g}
             styleProps={{ ...styleProps, left: 1205, top: 260 }}
           />
           <IstabasAttels
             alt={"logo28"}
+            cellID="1"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ll3}
             source2={ll3g}
             styleProps={{ ...styleProps, left: 1259, top: 260 }}
           />
           <IstabasAttels
             alt={"logo29"}
+            cellID="1"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ll5}
             source2={ll5g}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
             alt={"logo30"}
+            cellID="4"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ll4}
             source2={ll4g}
             styleProps={{ ...styleProps, left: 1293, top: 260 }}
@@ -315,32 +369,56 @@ export const Floor4 = () => {
 
           <IstabasAttels
             alt={"logo31"}
+            cellID="3"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={ll6}
             source2={ll6g}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
             alt={"logo32"}
+            cellID="8"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={la1}
             source2={la1g}
             styleProps={{ ...styleProps, left: 1143, top: 127 }}
           />
           <IstabasAttels
             alt={"logo33"}
+            cellID="5"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={la2}
             source2={la2g}
             styleProps={{ ...styleProps, left: 1280, top: 127 }}
           />
           <IstabasAttels
             alt={"logo34"}
+            cellID="2"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={la3}
             source2={la3g}
             styleProps={{ ...styleProps, left: 1360, top: 127 }}
           />
         </CardBasic>
       </Row>
-
-      {/*<Row><CardBasic>Informacija par celliem zem floor plan</CardBasic></Row>*/}
+      <Row>
+        <CardBasic>
+          <h4>Room number: {HoveredNameState}</h4>
+        </CardBasic>
+        <CardBasic>Informacija par celliem zem floor plan</CardBasic>
+      </Row>
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <b>Design your Popup {HoveredNameState}</b>
+              <p>as {HoveredNameState}</p>
+              <button>Test button</button>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}{" "}
     </>
   );
 };

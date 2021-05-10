@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardBasic } from "../components/CardBasic";
-import { IstabasAttels } from "../components/IstabasAttels";
+import { IstabasAttels, Popup } from "../components/IstabasAttels";
 import { Row } from "../UI/Row";
-import { CellData } from "../components/CellData"
+import { CellData } from "../components/CellData";
 //Middle
 import ka1 from "../Restes_bildes/1stavs/ka1.png";
 import kl1 from "../Restes_bildes/1stavs/kl1.png";
@@ -38,16 +38,26 @@ import nod4 from "../Restes_bildes/1stavs/nodk.png";
 import nod5 from "../Restes_bildes/1stavs/logi.png";
 
 export const Floor1 = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [HoveredNameState, setHoveredNameState] = useState("");
   useEffect(() => {
     // api call
     console.log("also i call something to python");
-  });
+  }, []);
+  useEffect(() => {
+    // api call
+    console.log(HoveredNameState);
+  }, [HoveredNameState]);
 
   const styleProps = {
     position: "absolute",
     transition: "all 0.25s",
     transform: "scale(1)",
   }; //te gan jau row vajadzetu aizstat ar kadu kas paliek pa visu ekrānu
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       <Row>
@@ -58,9 +68,12 @@ export const Floor1 = () => {
           ></div>
           <CellData>Data</CellData>
           <IstabasAttels
-            alt={"logo1"}/**Done */
+            cellID="7"
+            alt={"logo1"} /**Done */
             source1={ka1}
             source2={ka1g}
+            onHover={(ID) => setHoveredNameState(ID)}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 420,
@@ -68,9 +81,12 @@ export const Floor1 = () => {
             }}
           />
           <IstabasAttels
-            alt={"logo1"}/**Done */
+            alt={"logo1"} /**Done */
+            cellID="8"
             source1={kl1}
             source2={kl1g}
+            onHover={(ID) => setHoveredNameState(ID)}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 420,
@@ -79,8 +95,11 @@ export const Floor1 = () => {
           />
           <IstabasAttels /*done*/
             alt={"logo1"}
+            cellID="2"
             source1={ll1}
             source2={ll1g}
+            clicked={togglePopup}
+            onHover={(ID) => setHoveredNameState(ID)}
             styleProps={{
               ...styleProps,
               left: 648,
@@ -88,9 +107,12 @@ export const Floor1 = () => {
             }}
           />
           <IstabasAttels
-            alt={"logo1"}/*done*/
+            alt={"logo1"} /*done*/
+            cellID="1"
             source1={la2}
             source2={la2g}
+            clicked={togglePopup}
+            onHover={(ID) => setHoveredNameState(ID)}
             styleProps={{
               ...styleProps,
               left: 622,
@@ -98,9 +120,12 @@ export const Floor1 = () => {
             }}
           />
           <IstabasAttels
-            alt={"logo1"}/*Done*/
+            alt={"logo1"} /*Done*/
+            cellID="3"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={la1}
             source2={la1g}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 622,
@@ -109,8 +134,11 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            source1={va1}/**Done */
+            cellID="5"
+            onHover={(ID) => setHoveredNameState(ID)}
+            source1={va1} /**Done */
             source2={va1g}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 522,
@@ -118,9 +146,12 @@ export const Floor1 = () => {
             }}
           />
           <IstabasAttels
-            alt={"logo1"}/**Done */
+            alt={"logo1"} /**Done */
+            cellID="4"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={va2}
             source2={va2g}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 600,
@@ -129,8 +160,11 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
+            cellID="6"
+            onHover={(ID) => setHoveredNameState(ID)}
             source1={vl}
             source2={vlg}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 487,
@@ -138,9 +172,12 @@ export const Floor1 = () => {
             }}
           />
           <IstabasAttels
-            alt={"logo9"}/**Done */
+            alt={"logo9"} /**Done */
+            cellID="9"
             source1={r9}
             source2={r9g}
+            onHover={(ID) => setHoveredNameState(ID)}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 150,
@@ -197,14 +234,27 @@ export const Floor1 = () => {
               top: 475,
             }}
           />
-
         </CardBasic>
       </Row>
 
       <Row>
-        <CardBasic>Informacija par celliem zem floor plan</CardBasic>
+        <CardBasic>
+          <h4>Room number: {HoveredNameState}</h4>
+        </CardBasic>
         <CardBasic>Informacija par celliem zem floor plan</CardBasic>
       </Row>
+      {isOpen && (
+        <Popup
+          content={
+            <>
+              <b>Design your Popup</b>
+              <p>as</p>
+              <button>Test button</button>
+            </>
+          }
+          handleClose={togglePopup}
+        />
+      )}
     </>
   );
 };

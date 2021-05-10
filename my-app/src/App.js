@@ -17,7 +17,7 @@ import { Routes } from "./Routes";
  */
 function App() {
   // logged in state ? am i logged in or not
-  const [isAuthenticated, setisAuthenticated] = useState(true);
+  const [isAuthenticated, setisAuthenticated] = useState(false);
   const [articles, setArticles] = useState([]);
   const [editArticle, setEditArticle] = useState(null);
   const [token, setToken, removeToken] = useCookies(["mytoken"]);
@@ -39,14 +39,16 @@ function App() {
 
   useEffect(() => {
     if (!token["mytoken"]) {
-      history.push("/");
+      history.push("/App/login");
       //window.location.href = '/'
     }
   }, [token]);
-
-  const editBtn = (article) => {
-    setEditArticle(article);
-  };
+  useEffect(() => {
+    if (token["mytoken"]) {
+      setisAuthenticated(true);
+      //history.push("/App");
+    }
+  }, [token]);
 
   const updatedInformation = (article) => {
     const new_article = articles.map((myarticle) => {
@@ -81,20 +83,26 @@ function App() {
   };
 
   const onLogout = () => {
+    setisAuthenticated(false);
     removeToken(["mytoken"]);
+    //history.push("/App/login");
   };
 
   return (
     <div className="App">
       <WholeApp>
-        <Header onLogout={onLogout} />
+        <Header
+          onLogout={onLogout}
+          auth={{ isAuthenticated: isAuthenticated }}
+        />
+
         <Main>
           <Content>
             <Routes
               auth={{ isAuthenticated: isAuthenticated, loading: false }}
             />
           </Content>
-          {isAuthenticated && <Sidenav />}
+          {isAuthenticated === true && <Sidenav />}
         </Main>
       </WholeApp>
     </div>
