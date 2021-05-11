@@ -39,9 +39,14 @@ import nod5 from "../Restes_bildes/1stavs/logi.png";
 
 export const Floor1 = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [HoveredNameState, setHoveredNameState] = useState("");
-  const [CellState, setCellState] = useState("");
-  const [CellStatus, setCellStatus] = useState([]);
+  const [cellDataArray, setCellDataArray] = useState([]);
+  const [cellData, setCellData] = useState({
+    Name: "",
+    Date: "",
+    Floor: "",
+    cellID: "",
+    Status: "",
+  });
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/cellAlarms1/", {
       method: "GET",
@@ -50,9 +55,10 @@ export const Floor1 = () => {
       },
     })
       .then((resp) => resp.json())
-      .then((resp) => setCellStatus(resp))
+      .then((resp) => setCellDataArray(resp))
       .catch((error) => console.log(error));
   }, []);
+
   const styleProps = {
     position: "absolute",
     transition: "all 0.25s",
@@ -70,13 +76,14 @@ export const Floor1 = () => {
           <div
             style={{ height: 490, width: 1120, backgroundColor: "white" }}
           ></div>
-          <CellData>Data</CellData>
           <IstabasAttels
-            cellID="7"
+            cellData={cellDataArray.filter((cell) => cell.cellID == "7")[0]} //7
             alt={"logo1"} /**Done */
             source1={ka1}
             source2={ka1g}
-            onHover={(ID) => setHoveredNameState(ID)}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             clicked={togglePopup}
             styleProps={{
               ...styleProps,
@@ -86,10 +93,12 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /**Done */
-            cellID="8"
+            cellData={cellDataArray.filter((cell) => cell.cellID == "8")[0]}
             source1={kl1}
             source2={kl1g}
-            onHover={(ID) => setHoveredNameState(ID)}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             clicked={togglePopup}
             styleProps={{
               ...styleProps,
@@ -99,11 +108,13 @@ export const Floor1 = () => {
           />
           <IstabasAttels /*done*/
             alt={"logo1"}
-            cellID="2"
+            cellData={cellDataArray.filter((cell) => cell.cellID == "2")[0]}
             source1={ll1}
             source2={ll1g}
             clicked={togglePopup}
-            onHover={(ID) => setHoveredNameState(ID)}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             styleProps={{
               ...styleProps,
               left: 648,
@@ -112,11 +123,13 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /*done*/
-            cellID="1"
+            cellData={cellDataArray.filter((cell) => cell.cellID == "1")[0]}
             source1={la2}
             source2={la2g}
             clicked={togglePopup}
-            onHover={(ID) => setHoveredNameState(ID)}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             styleProps={{
               ...styleProps,
               left: 622,
@@ -125,8 +138,10 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /*Done*/
-            cellID="3"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID == "3")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={la1}
             source2={la1g}
             clicked={togglePopup}
@@ -138,8 +153,10 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            cellID="5"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID == "5")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={va1} /**Done */
             source2={va1g}
             clicked={togglePopup}
@@ -151,8 +168,10 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /**Done */
-            cellID="4"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID == "4")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={va2}
             source2={va2g}
             clicked={togglePopup}
@@ -164,8 +183,10 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            cellID="6"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID == "6")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={vl}
             source2={vlg}
             clicked={togglePopup}
@@ -177,10 +198,12 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo9"} /**Done */
-            cellID="9"
+            cellData={cellDataArray.filter((cell) => cell.cellID == "9")[0]}
             source1={r9}
             source2={r9g}
-            onHover={(ID) => setHoveredNameState(ID)}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             clicked={togglePopup}
             styleProps={{
               ...styleProps,
@@ -240,18 +263,8 @@ export const Floor1 = () => {
           />
         </CardBasic>
       </Row>
-      <Row>
-        <CardBasic>
-          <h4>Room number: {HoveredNameState}</h4>
-          <h4>
-            Room Status:
-            {CellStatus.map((CellState) => (
-              <div>{CellState.ID}</div>
-            ))}
-          </h4>
-        </CardBasic>
-        <CardBasic>Informacija par celliem zem floor plan</CardBasic>
-      </Row>
+      <CellData {...cellData} />
+
       {isOpen && (
         <Popup
           content={

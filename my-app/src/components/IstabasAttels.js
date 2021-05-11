@@ -15,13 +15,13 @@ export const Popup = (props) => {
 };
 
 export const IstabasAttels = ({
-  cellID,
-  onHover = (ID) => console.log(ID),
+  cellData,
+  onHover = (cellData) => console.log(cellData), //console.log=default state
   source1,
   source2,
   alt,
   styleProps,
-  clicked,
+  clicked, //change to onClick un  onClicked
 }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -38,7 +38,7 @@ export const IstabasAttels = ({
         style={styleProps}
         onMouseOver={() => {
           setHovered(true);
-          onHover(cellID);
+          onHover(cellData);
         }}
         onMouseOut={() => setHovered(false)}
         onClick={clicked}

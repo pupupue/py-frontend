@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardBasic } from "../components/CardBasic";
+import { CellData } from "../components/CellData";
 import { IstabasAttels, Popup } from "../components/IstabasAttels";
 import { Row } from "../UI/Row";
 
@@ -19,11 +20,24 @@ import r4g from "../Restes_bildes/roof/r4g.png";
 export const Floor6 = () => {
   const param = useParams();
   const [isOpen, setIsOpen] = useState(false);
-  const [HoveredNameState, setHoveredNameState] = useState("");
-
+  const [cellDataArray, setCellDataArray] = useState([]);
+  const [cellData, setCellData] = useState({
+    Name: "",
+    Date: "",
+    Floor: "",
+    cellID: "",
+    Status: "",
+  });
   useEffect(() => {
-    // api call
-    console.log("also i call something to python");
+    fetch("http://127.0.0.1:8000/api/cellAlarms6/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((resp) => setCellDataArray(resp))
+      .catch((error) => console.log(error));
   }, []);
 
   const styleProps = {
@@ -35,7 +49,10 @@ export const Floor6 = () => {
     <>
       <Row>
         <CardBasic>
-          <div style={{ textSizeAdjust: "2rem" }}>This is the Attic plan</div>
+          <div style={{ textSizeAdjust: "2rem" }}>
+            This is the Attic plan, hover on a room to get more information, or
+            click to change
+          </div>
         </CardBasic>
       </Row>
       <Row>
@@ -45,8 +62,10 @@ export const Floor6 = () => {
           ></div>
           <IstabasAttels
             alt={"logo1"}
-            cellID="4"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "4")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={plan}
             source2={plan}
             styleProps={{
@@ -57,8 +76,10 @@ export const Floor6 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            cellID="1"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "1")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={r1}
             source2={r1g}
             styleProps={{
@@ -69,8 +90,10 @@ export const Floor6 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            cellID="2"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "2")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={r2}
             source2={r2g}
             styleProps={{
@@ -81,8 +104,10 @@ export const Floor6 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            cellID="3"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "3")[0]}
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={r3}
             source2={r3g}
             styleProps={{
@@ -104,11 +129,7 @@ export const Floor6 = () => {
         </CardBasic>
       </Row>
 
-      <Row>
-        <CardBasic>
-          <h4>Room number: {HoveredNameState}</h4>
-        </CardBasic>
-      </Row>
+      <CellData {...cellData} />
     </>
   );
 };

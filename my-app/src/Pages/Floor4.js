@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardBasic } from "../components/CardBasic";
+import { CellData } from "../components/CellData";
 import { IstabasAttels, Popup } from "../components/IstabasAttels";
 import { Row } from "../UI/Row";
 //Middle
@@ -62,10 +63,24 @@ import la3g from "../Restes_bildes/3stavs/laba_augsa_3g.png";
 export const Floor4 = () => {
   const param = useParams();
   const [isOpen, setIsOpen] = useState(false);
-  const [HoveredNameState, setHoveredNameState] = useState("");
+  const [cellDataArray, setCellDataArray] = useState([]);
+  const [cellData, setCellData] = useState({
+    Name: "",
+    Date: "",
+    Floor: "",
+    cellID: "",
+    Status: "",
+  });
   useEffect(() => {
-    // api call
-    console.log("also i call something to python");
+    fetch("http://127.0.0.1:8000/api/cellAlarms4/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((resp) => setCellDataArray(resp))
+      .catch((error) => console.log(error));
   }, []);
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -84,8 +99,10 @@ export const Floor4 = () => {
           ></div>
           <IstabasAttels
             alt={"logo1"}
-            cellID="24"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "24")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -97,8 +114,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo2"}
-            cellID="21"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "21")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -110,8 +129,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo3"}
-            cellID="19"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "19")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -123,8 +144,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo4"}
-            cellID="17"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "17")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -136,8 +159,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo5"}
-            cellID="16"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "16")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -149,8 +174,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo6"}
-            cellID="15"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "15")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -162,8 +189,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo7"}
-            cellID="14"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "14")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -175,8 +204,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo8"}
-            cellID="13"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "13")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -188,8 +219,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo9"}
-            cellID="12"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "12")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -201,8 +234,10 @@ export const Floor4 = () => {
           />
           <IstabasAttels
             alt={"logo10"}
-            cellID="9"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "9")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={bottom}
             source2={bottom_g}
             styleProps={{
@@ -215,72 +250,90 @@ export const Floor4 = () => {
 
           <IstabasAttels
             alt={"logo11"}
-            cellID="18"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "18")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={k1}
             source2={k1g}
             styleProps={{ ...styleProps, left: 645, top: 200 }}
           />
           <IstabasAttels
             alt={"logo12"}
-            cellID="20"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "20")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={k2}
             source2={k2g}
             styleProps={{ ...styleProps, left: 615, top: 200 }}
           />
           <IstabasAttels
             alt={"logo13"}
-            cellID="22"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "22")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={k3}
             source2={k3g}
             styleProps={{ ...styleProps, left: 542, top: 200 }}
           />
           <IstabasAttels
             alt={"logo14"}
-            cellID="23"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "23")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={k4}
             source2={k4g}
             styleProps={{ ...styleProps, left: 440, top: 200 }}
           />
           <IstabasAttels
             alt={"logo15"}
-            cellID="26"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "26")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={kl1}
             source2={kl1g}
             styleProps={{ ...styleProps, left: 230, top: 262 }}
           />
           <IstabasAttels
             alt={"logo16"}
-            cellID="27"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "27")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={kl2}
             source2={kl2g}
             styleProps={{ ...styleProps, left: 338, top: 262 }}
           />
           <IstabasAttels
             alt={"logo17"}
-            cellID="28"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "28")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={kl3}
             source2={kl3g}
             styleProps={{ ...styleProps, left: 383, top: 262 }}
           />
           <IstabasAttels
             alt={"logo18"}
-            cellID="32"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "32")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={kl4}
             source2={kl4g}
             styleProps={{ ...styleProps, left: 156, top: 262 }}
           />
           <IstabasAttels
             alt={"logo19"}
-            cellID="30"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "30")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={kl5}
             source2={kl5g}
             styleProps={{ ...styleProps, left: 190, top: 262 }}
@@ -288,80 +341,100 @@ export const Floor4 = () => {
 
           <IstabasAttels
             alt={"logo21"}
-            cellID="25"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "25")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ka1}
             source2={ka1g}
             styleProps={{ ...styleProps, left: 303, top: 127 }}
           />
           <IstabasAttels
             alt={"logo22"}
-            cellID="29"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "29")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ka2}
             source2={ka2g}
             styleProps={{ ...styleProps, left: 220, top: 127 }}
           />
           <IstabasAttels
             alt={"logo23"}
-            cellID="31"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "31")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ka3}
             source2={ka3g}
             styleProps={{ ...styleProps, left: 156, top: 127 }}
           />
           <IstabasAttels
             alt={"logo24"}
-            cellID="11"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "11")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={l1}
             source2={l1g}
             styleProps={{ ...styleProps, left: 1000, top: 200 }}
           />
           <IstabasAttels
             alt={"logo25"}
-            cellID="10"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "10")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={l2}
             source2={l2g}
             styleProps={{ ...styleProps, left: 1049, top: 200 }}
           />
           <IstabasAttels
             alt={"logo26"}
-            cellID="7"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "7")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ll1}
             source2={ll1g}
             styleProps={{ ...styleProps, left: 1143, top: 255 }}
           />
           <IstabasAttels
             alt={"logo27"}
-            cellID="6"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "6")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ll2}
             source2={ll2g}
             styleProps={{ ...styleProps, left: 1205, top: 260 }}
           />
           <IstabasAttels
             alt={"logo28"}
-            cellID="1"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "1")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ll3}
             source2={ll3g}
             styleProps={{ ...styleProps, left: 1259, top: 260 }}
           />
           <IstabasAttels
             alt={"logo29"}
-            cellID="1"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "1")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ll5}
             source2={ll5g}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
             alt={"logo30"}
-            cellID="4"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "4")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ll4}
             source2={ll4g}
             styleProps={{ ...styleProps, left: 1293, top: 260 }}
@@ -369,32 +442,40 @@ export const Floor4 = () => {
 
           <IstabasAttels
             alt={"logo31"}
-            cellID="3"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "3")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={ll6}
             source2={ll6g}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
             alt={"logo32"}
-            cellID="8"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "8")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={la1}
             source2={la1g}
             styleProps={{ ...styleProps, left: 1143, top: 127 }}
           />
           <IstabasAttels
             alt={"logo33"}
-            cellID="5"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "5")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={la2}
             source2={la2g}
             styleProps={{ ...styleProps, left: 1280, top: 127 }}
           />
           <IstabasAttels
             alt={"logo34"}
-            cellID="2"
-            onHover={(ID) => setHoveredNameState(ID)}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "2")[0]} //7
+            onHover={(cellData) => {
+              setCellData(cellData);
+            }}
             source1={la3}
             source2={la3g}
             styleProps={{ ...styleProps, left: 1360, top: 127 }}
@@ -402,23 +483,21 @@ export const Floor4 = () => {
         </CardBasic>
       </Row>
       <Row>
-        <CardBasic>
-          <h4>Room number: {HoveredNameState}</h4>
-        </CardBasic>
+        <CellData {...cellData} />
         <CardBasic>Informacija par celliem zem floor plan</CardBasic>
       </Row>
       {isOpen && (
         <Popup
           content={
             <>
-              <b>Design your Popup {HoveredNameState}</b>
-              <p>as {HoveredNameState}</p>
+              <b>Design your Popup </b>
+              <p>as </p>
               <button>Test button</button>
             </>
           }
           handleClose={togglePopup}
         />
-      )}{" "}
+      )}
     </>
   );
 };
