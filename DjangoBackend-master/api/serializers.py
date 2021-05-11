@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Article, Cell
+from .models import Article, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
 
@@ -17,6 +17,42 @@ class CellSerializer(serializers.ModelSerializer):
             'Processed', 'ODD', 'GMDHMS', 'US', 'FMIN', 'FMAX', 'DF', 'N',
             'SPECTER', 'CRC'
         ]
+
+
+class CellAlarms1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = CellAlarms1
+        fields = ['Name', 'Date', 'Floor', 'cellID', 'Status']
+
+
+class CellAlarms2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = CellAlarms2
+        fields = ['Name', 'Date', 'Floor', 'cellID', 'Status']
+
+
+class CellAlarms3Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = CellAlarms3
+        fields = ['Name', 'Date', 'Floor', 'cellID', 'Status']
+
+
+class CellAlarms4Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = CellAlarms4
+        fields = ['Name', 'Date', 'Floor', 'cellID', 'Status']
+
+
+class CellAlarms5Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = CellAlarms5
+        fields = ['Name', 'Date', 'Floor', 'cellID', 'Status']
+
+
+class CellAlarms6Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = CellAlarms6
+        fields = ['Name', 'Date', 'Floor', 'cellID', 'Status']
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -1,5 +1,5 @@
-from .models import Article, Cell
-from .serializers import ArticleSerializer, UserSerializer, CellSerializer
+from .models import Article, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
+from .serializers import ArticleSerializer, UserSerializer, CellSerializer, CellAlarms1Serializer, CellAlarms2Serializer, CellAlarms3Serializer, CellAlarms4Serializer, CellAlarms5Serializer, CellAlarms6Serializer
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -18,6 +18,48 @@ class CellViewSet(viewsets.ModelViewSet):
     serializer_class = CellSerializer
     permission_classes = [IsAuthenticated]
     authentication_classes = (TokenAuthentication, )
+
+
+class CellAlarms1ViewSet(viewsets.ModelViewSet):
+    queryset = CellAlarms1.objects.all()
+    serializer_class = CellAlarms1Serializer
+
+
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = (TokenAuthentication, )
+class CellAlarms2ViewSet(viewsets.ModelViewSet):
+    queryset = CellAlarms2.objects.all()
+    serializer_class = CellAlarms2Serializer
+
+
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = (TokenAuthentication, )
+class CellAlarms3ViewSet(viewsets.ModelViewSet):
+    queryset = CellAlarms3.objects.all()
+    serializer_class = CellAlarms3Serializer
+
+
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = (TokenAuthentication, )
+class CellAlarms4ViewSet(viewsets.ModelViewSet):
+    queryset = CellAlarms4.objects.all()
+    serializer_class = CellAlarms4Serializer
+
+
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = (TokenAuthentication, )
+class CellAlarms5ViewSet(viewsets.ModelViewSet):
+    queryset = CellAlarms5.objects.all()
+    serializer_class = CellAlarms5Serializer
+
+
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = (TokenAuthentication, )
+class CellAlarms6ViewSet(viewsets.ModelViewSet):
+    queryset = CellAlarms6.objects.all()
+    serializer_class = CellAlarms6Serializer
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = (TokenAuthentication, )
 
 
 class UserViewSet(viewsets.ModelViewSet):

@@ -12,7 +12,13 @@ export const Login = (props) => {
 
   useEffect(() => {
     if (token["mytoken"]) {
-      history.push("/App");
+      if (token["mytoken"] == "undefined") {
+        console.log("wrong");
+      } else {
+        history.push("/App");
+      }
+    } else {
+      history.push("/App/Login");
     }
   }, [token]);
 

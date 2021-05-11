@@ -26,3 +26,69 @@ class Cell(models.Model):
 
     def __str__(self):
         return self.Processed
+
+
+class CellAlarms1(models.Model):
+    Name = models.CharField("Name", max_length=20)
+    Date = models.CharField("Date", max_length=20)
+    Floor = models.CharField("Floor", max_length=20)
+    cellID = models.CharField("cellID", max_length=20)
+    Status = models.CharField("Status", max_length=20)
+
+    def __str__(self):
+        return self.Name
+
+
+class CellAlarms2(models.Model):
+    Name = models.CharField("Name", max_length=20)
+    Date = models.CharField("Date", max_length=20)
+    Floor = models.CharField("Floor", max_length=20)
+    cellID = models.CharField("cellID", max_length=20)
+    Status = models.CharField("Status", max_length=20)
+
+    def __str__(self):
+        return self.Name
+
+
+class CellAlarms3(models.Model):
+    Name = models.CharField("Name", max_length=20)
+    Date = models.CharField("Date", max_length=20)
+    Floor = models.CharField("Floor", max_length=20)
+    cellID = models.CharField("cellID", max_length=20)
+    Status = models.CharField("Status", max_length=20)
+
+    def __str__(self):
+        return self.Name
+
+
+class CellAlarms4(models.Model):
+    Name = models.CharField("Name", max_length=20)
+    Date = models.CharField("Date", max_length=20)
+    Floor = models.CharField("Floor", max_length=20)
+    cellID = models.CharField("cellID", max_length=20)
+    Status = models.CharField("Status", max_length=20)
+
+    def __str__(self):
+        return self.Name
+
+
+class CellAlarms5(models.Model):
+    Name = models.CharField("Name", max_length=20)
+    Date = models.CharField("Date", max_length=20)
+    Floor = models.CharField("Floor", max_length=20)
+    cellID = models.CharField("cellID", max_length=20)
+    Status = models.CharField("Status", max_length=20)
+
+    def __str__(self):
+        return self.Name
+
+
+class CellAlarms6(models.Model):
+    Name = models.CharField("Name", max_length=20)
+    Date = models.CharField("Date", max_length=20)
+    Floor = models.CharField("Floor", max_length=20)
+    cellID = models.CharField("cellID", max_length=20)
+    Status = models.CharField("Status", max_length=20)
+
+    def __str__(self):
+        return self.Name

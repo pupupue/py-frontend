@@ -41,12 +41,8 @@ function App() {
     if (!token["mytoken"]) {
       history.push("/App/login");
       //window.location.href = '/'
-    }
-  }, [token]);
-  useEffect(() => {
-    if (token["mytoken"]) {
+    } else if (token["mytoken"] != "undefined") {
       setisAuthenticated(true);
-      //history.push("/App");
     }
   }, [token]);
 
@@ -102,7 +98,7 @@ function App() {
               auth={{ isAuthenticated: isAuthenticated, loading: false }}
             />
           </Content>
-          {isAuthenticated === true && <Sidenav />}
+          {isAuthenticated && <Sidenav />}
         </Main>
       </WholeApp>
     </div>

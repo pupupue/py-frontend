@@ -40,15 +40,19 @@ import nod5 from "../Restes_bildes/1stavs/logi.png";
 export const Floor1 = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [HoveredNameState, setHoveredNameState] = useState("");
+  const [CellState, setCellState] = useState("");
+  const [CellStatus, setCellStatus] = useState([]);
   useEffect(() => {
-    // api call
-    console.log("also i call something to python");
+    fetch("http://127.0.0.1:8000/api/cellAlarms1/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((resp) => setCellStatus(resp))
+      .catch((error) => console.log(error));
   }, []);
-  useEffect(() => {
-    // api call
-    console.log(HoveredNameState);
-  }, [HoveredNameState]);
-
   const styleProps = {
     position: "absolute",
     transition: "all 0.25s",
@@ -236,10 +240,15 @@ export const Floor1 = () => {
           />
         </CardBasic>
       </Row>
-
       <Row>
         <CardBasic>
           <h4>Room number: {HoveredNameState}</h4>
+          <h4>
+            Room Status:
+            {CellStatus.map((CellState) => (
+              <div>{CellState.ID}</div>
+            ))}
+          </h4>
         </CardBasic>
         <CardBasic>Informacija par celliem zem floor plan</CardBasic>
       </Row>
