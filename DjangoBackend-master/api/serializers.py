@@ -1,13 +1,19 @@
 from rest_framework import serializers
-from .models import Article, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
+from .models import Articles, Notes, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
 
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Article
+        model = Articles
         fields = ['id', 'title', 'description']
+
+
+class NotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notes
+        fields = ['id', 'title', 'description', 'user', 'date']
 
 
 class CellSerializer(serializers.ModelSerializer):
@@ -58,7 +64,10 @@ class CellAlarms6Serializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password']
+        fields = [
+            'id', 'username', 'password', 'email', 'first_name', 'last_name',
+            'groups'
+        ]
 
         extra_kwargs = {'password': {'write_only': True, 'required': True}}
 

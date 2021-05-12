@@ -1,5 +1,5 @@
-from .models import Article, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
-from .serializers import ArticleSerializer, UserSerializer, CellSerializer, CellAlarms1Serializer, CellAlarms2Serializer, CellAlarms3Serializer, CellAlarms4Serializer, CellAlarms5Serializer, CellAlarms6Serializer
+from .models import Notes, Articles, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
+from .serializers import NotesSerializer, ArticleSerializer, UserSerializer, CellSerializer, CellAlarms1Serializer, CellAlarms2Serializer, CellAlarms3Serializer, CellAlarms4Serializer, CellAlarms5Serializer, CellAlarms6Serializer
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -7,10 +7,17 @@ from django.contrib.auth.models import User
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
+    queryset = Articles.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = [IsAuthenticated]
     authentication_classes = (TokenAuthentication, )
+
+
+class NotesViewSet(viewsets.ModelViewSet):
+    queryset = Notes.objects.all()
+    serializer_class = NotesSerializer
+    # permission_classes = [IsAuthenticated]
+    # authentication_classes = (TokenAuthentication, )
 
 
 class CellViewSet(viewsets.ModelViewSet):

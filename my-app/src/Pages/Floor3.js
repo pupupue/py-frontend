@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardBasic } from "../components/CardBasic";
 import { CellData } from "../components/CellData";
-import { IstabasAttels, Popup } from "../components/IstabasAttels";
+import { IstabasAttels } from "../components/IstabasAttels";
+import { Popup } from "../components/Popup/Popup";
 import { Row } from "../UI/Row";
 //Middle
 import bottom from "../Restes_bildes/balts.png";

@@ -10,6 +10,7 @@ import { Floor3 } from "./Pages/Floor3";
 import { Floor4 } from "./Pages/Floor4";
 import { Floor5 } from "./Pages/Floor5";
 import { Floor6 } from "./Pages/Floor6";
+import { Notes } from "./Pages/Notes";
 import { Dashboard } from "./Pages/Dashboard";
 import { Maintenance } from "./Pages/Maintenance";
 
@@ -30,6 +31,7 @@ export const Routes = ({ auth }) => {
       <PrivateRoute exact path="/App/floor4" component={Floor4} auth={auth} />
       <PrivateRoute exact path="/App/floor5" component={Floor5} auth={auth} />
       <PrivateRoute exact path="/App/floor6" component={Floor6} auth={auth} />
+      <PrivateRoute exact path="/App/notes" component={Notes} auth={auth} />
       <PrivateRoute
         exact
         path="/App/maintenance"

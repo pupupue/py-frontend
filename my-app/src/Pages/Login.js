@@ -7,6 +7,7 @@ export const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useCookies(["mytoken"]);
+  const [logedUser, setLogedUser] = useCookies(["myusername"]);
   const [isLogin, setLogin] = useState(true);
   let history = useHistory();
 
@@ -25,6 +26,7 @@ export const Login = (props) => {
   const loginBtn = () => {
     APIService.LoginUser({ username, password })
       .then((resp) => setToken("mytoken", resp.token))
+      .then((resp) => setLogedUser("myusername", username))
       .catch((error) => console.log(error));
   };
 
@@ -85,7 +87,10 @@ export const Login = (props) => {
         {isLogin ? (
           <h5>
             If You Don't Have Account, Please{" "}
-            <button className="btn btn-primary" onClick={() => setLogin(false)}>
+            <button
+              className="btn btn-primary"
+              onClick={() => history.push("/App/register")}
+            >
               Register
             </button>
             Here

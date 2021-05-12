@@ -3,9 +3,19 @@ from django.db import models
 # Create your models here.
 
 
-class Article(models.Model):
+class Articles(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+class Notes(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    user = models.CharField(max_length=20)
+    date = models.DateField()
 
     def __str__(self):
         return self.title
@@ -30,7 +40,7 @@ class Cell(models.Model):
 
 class CellAlarms1(models.Model):
     Name = models.CharField("Name", max_length=20)
-    Date = models.CharField("Date", max_length=20)
+    Date = models.DateField()
     Floor = models.CharField("Floor", max_length=20)
     cellID = models.CharField("cellID", max_length=20)
     Status = models.CharField("Status", max_length=20)

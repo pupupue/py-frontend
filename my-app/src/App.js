@@ -21,6 +21,7 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [editArticle, setEditArticle] = useState(null);
   const [token, setToken, removeToken] = useCookies(["mytoken"]);
+  const [username, setUsername, removeUsername] = useCookies(["myusername"]);
 
   let history = useHistory();
 
@@ -81,6 +82,7 @@ function App() {
   const onLogout = () => {
     setisAuthenticated(false);
     removeToken(["mytoken"]);
+    removeUsername(["myusername"]);
     //history.push("/App/login");
   };
 

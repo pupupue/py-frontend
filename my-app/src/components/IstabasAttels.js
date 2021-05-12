@@ -1,30 +1,23 @@
 import React, { useState } from "react";
 import "./IstabasAttels.css";
 
-export const Popup = (props) => {
-  return (
-    <div className="popup-box">
-      <div className="box">
-        <span className="close-icon" onClick={props.handleClose}>
-          x
-        </span>
-        {props.content}
-      </div>
-    </div>
-  );
-};
-
 export const IstabasAttels = ({
   cellData,
   onHover = (cellData) => console.log(cellData), //console.log=default state
   source1,
   source2,
+  source3,
   alt,
   styleProps,
   clicked, //change to onClick un  onClicked
 }) => {
   const [hovered, setHovered] = useState(false);
-
+  const src =
+    cellData && cellData.Status === "DOWN"
+      ? source3
+      : hovered
+      ? source2
+      : source1;
   const STYLE = {
     display: "flex",
     flexDirection: "column",
@@ -42,7 +35,7 @@ export const IstabasAttels = ({
         }}
         onMouseOut={() => setHovered(false)}
         onClick={clicked}
-        src={hovered ? source2 : source1}
+        src={src}
         alt={alt}
       />
     </>

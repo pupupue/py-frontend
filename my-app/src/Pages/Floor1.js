@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardBasic } from "../components/CardBasic";
-import { IstabasAttels, Popup } from "../components/IstabasAttels";
+import { IstabasAttels } from "../components/IstabasAttels";
+import { Popup } from "../components/Popup/Popup";
 import { Row } from "../UI/Row";
 import { CellData } from "../components/CellData";
 //Middle
@@ -30,6 +31,19 @@ import va2g from "../Restes_bildes/1stavs/va2g.png";
 import vlg from "../Restes_bildes/1stavs/vlg.png";
 //######################################################################
 import r9g from "../Restes_bildes/1stavs/talaiskg.png";
+//######################################################################
+import ka1r from "../Restes_bildes/1stavs/ka1r.png";
+import kl1r from "../Restes_bildes/1stavs/kl1r.png";
+//######################################################################
+import ll1r from "../Restes_bildes/1stavs/ll1r.png";
+import la2r from "../Restes_bildes/1stavs/la1r.png";
+import la1r from "../Restes_bildes/1stavs/la2r.png";
+//######################################################################
+import va1r from "../Restes_bildes/1stavs/va1r.png";
+import va2r from "../Restes_bildes/1stavs/va2r.png";
+import vlr from "../Restes_bildes/1stavs/vlr.png";
+//######################################################################
+import r9r from "../Restes_bildes/1stavs/talaiskr.png";
 //Background images to fill space
 import nod1 from "../Restes_bildes/1stavs/nodrightdown.png";
 import nod2 from "../Restes_bildes/1stavs/nodupright.png";
@@ -81,6 +95,7 @@ export const Floor1 = () => {
             alt={"logo1"} /**Done */
             source1={ka1}
             source2={ka1g}
+            source3={ka1r}
             onHover={(cellData) => {
               setCellData(cellData);
             }}
@@ -96,6 +111,7 @@ export const Floor1 = () => {
             cellData={cellDataArray.filter((cell) => cell.cellID == "8")[0]}
             source1={kl1}
             source2={kl1g}
+            source3={kl1r}
             onHover={(cellData) => {
               setCellData(cellData);
             }}
@@ -111,6 +127,7 @@ export const Floor1 = () => {
             cellData={cellDataArray.filter((cell) => cell.cellID == "2")[0]}
             source1={ll1}
             source2={ll1g}
+            source3={ll1r}
             clicked={togglePopup}
             onHover={(cellData) => {
               setCellData(cellData);
@@ -126,6 +143,7 @@ export const Floor1 = () => {
             cellData={cellDataArray.filter((cell) => cell.cellID == "1")[0]}
             source1={la2}
             source2={la2g}
+            source3={la2r}
             clicked={togglePopup}
             onHover={(cellData) => {
               setCellData(cellData);
@@ -144,6 +162,7 @@ export const Floor1 = () => {
             }}
             source1={la1}
             source2={la1g}
+            source3={la1r}
             clicked={togglePopup}
             styleProps={{
               ...styleProps,
@@ -159,6 +178,7 @@ export const Floor1 = () => {
             }}
             source1={va1} /**Done */
             source2={va1g}
+            source3={va1r}
             clicked={togglePopup}
             styleProps={{
               ...styleProps,
@@ -174,6 +194,7 @@ export const Floor1 = () => {
             }}
             source1={va2}
             source2={va2g}
+            source3={va2r}
             clicked={togglePopup}
             styleProps={{
               ...styleProps,
@@ -189,6 +210,7 @@ export const Floor1 = () => {
             }}
             source1={vl}
             source2={vlg}
+            source3={vlr}
             clicked={togglePopup}
             styleProps={{
               ...styleProps,
@@ -201,6 +223,7 @@ export const Floor1 = () => {
             cellData={cellDataArray.filter((cell) => cell.cellID == "9")[0]}
             source1={r9}
             source2={r9g}
+            source3={r9r}
             onHover={(cellData) => {
               setCellData(cellData);
             }}
@@ -265,18 +288,7 @@ export const Floor1 = () => {
       </Row>
       <CellData {...cellData} />
 
-      {isOpen && (
-        <Popup
-          content={
-            <>
-              <b>Design your Popup</b>
-              <p>as</p>
-              <button>Test button</button>
-            </>
-          }
-          handleClose={togglePopup}
-        />
-      )}
+      {isOpen && <Popup {...cellData} handleClose={togglePopup} />}
     </>
   );
 };

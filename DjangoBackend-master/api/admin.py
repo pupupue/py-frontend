@@ -1,15 +1,21 @@
 from django.contrib import admin
-from .models import Article, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
+from .models import Articles, Notes, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
 
 # Register your models here.
 
 #admin.site.register(Article)
 
 
-@admin.register(Article)
+@admin.register(Articles)
 class ArticleModel(admin.ModelAdmin):
     list_filter = ('title', 'description')
     list_display = ('title', 'description')
+
+
+@admin.register(Notes)
+class ArticleModel(admin.ModelAdmin):
+    list_filter = ('title', 'description', 'user')
+    list_display = ('title', 'description', 'user')
 
 
 @admin.register(Cell)

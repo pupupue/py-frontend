@@ -10,12 +10,21 @@ export default class APIService {
     }).then((resp) => resp.json());
   }
 
-  static InsertArticle(body, token) {
-    return fetch("http://127.0.0.1:8000/api/articles/", {
+  static UpdateNote(note_id, body) {
+    return fetch(`http://127.0.0.1:8000/api/notes/${note_id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }).then((resp) => resp.json());
+  }
+
+  static InsertNote(body) {
+    return fetch("http://127.0.0.1:8000/api/notes/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Token ${token}`,
       },
       body: JSON.stringify(body),
     }).then((resp) => resp.json());

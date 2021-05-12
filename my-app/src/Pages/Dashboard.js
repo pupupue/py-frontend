@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row } from "../UI/Row";
-
+import { NotesList } from "../components/Notes/NoteList";
 import { CardBasic } from "../components/CardBasic";
+import { InsertNote } from "../APIService";
 
 export const Dashboard = ({ children }) => {
+  const [notes, setNotes] = useState([]);
+  const [editNote, setEditNote] = useState(null);
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/notes/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((resp) => setNotes(resp))
+      .catch((error) => console.log(error));
+  }, []);
+  const deleteBtn = (note) => {
+    const new_notes = note.filter((mynote) => {
+      if (mynote.id === note.id) {
+        return false;
+      }
+      return true;
+    });
+
+    setNotes(new_notes);
+  };
+  const editBtn = (note) => {
+    setEditNote(note);
+  };
   return (
     <>
       <Row>
@@ -18,15 +45,23 @@ export const Dashboard = ({ children }) => {
           </h2>
           <br></br>
           <p>None</p>
-          <p>None</p>
-          <p>None</p>
         </CardBasic>
       </Row>
       <Row>
         <CardBasic>
-          <h2 style={{ fontSize: "3rem", textDecoration: "underline" }}>
-            Notes
+          <h2 style={{ fontSize: "2rem", textDecoration: "underline" }}>
+            Notes:
           </h2>
+          <div>
+            <input
+              style={{ width: "70%" }}
+              type="text"
+              placeholder="Enter a new note"
+            />
+            <button>Add note</button>
+          </div>
+          <br></br>
+          <NotesList notes={notes} editBtn={editBtn} deleteBtn={deleteBtn} />
         </CardBasic>
         <CardBasic>
           <h2 style={{ fontSize: "3rem" }}>
