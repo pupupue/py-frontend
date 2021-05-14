@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Articles, Notes, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
+from .models import AlarmChanges, Articles, Notes, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
 
 # Register your models here.
 
@@ -58,3 +58,9 @@ class CellAlarms5Model(admin.ModelAdmin):
 class CellAlarms6Model(admin.ModelAdmin):
     list_filter = ('Name', 'cellID', 'Status')
     list_display = ('Name', 'cellID', 'Status')
+
+
+@admin.register(AlarmChanges)
+class AlarmChangesModel(admin.ModelAdmin):
+    list_filter = ('Date', 'User')
+    list_display = ('Date', 'User')

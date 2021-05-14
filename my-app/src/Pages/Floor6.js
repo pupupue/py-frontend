@@ -17,6 +17,11 @@ import r1g from "../Restes_bildes/roof/r1g.png";
 import r2g from "../Restes_bildes/roof/r2g.png";
 import r3g from "../Restes_bildes/roof/r3g.png";
 import r4g from "../Restes_bildes/roof/r4g.png";
+//######################################################################
+import r1r from "../Restes_bildes/roof/r1r.png";
+import r2r from "../Restes_bildes/roof/r2r.png";
+import r3r from "../Restes_bildes/roof/r3r.png";
+import r4r from "../Restes_bildes/roof/r4r.png";
 
 export const Floor6 = () => {
   const param = useParams();
@@ -40,7 +45,9 @@ export const Floor6 = () => {
       .then((resp) => setCellDataArray(resp))
       .catch((error) => console.log(error));
   }, []);
-
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
   const styleProps = {
     position: "absolute",
     transition: "all 0.25s",
@@ -83,6 +90,8 @@ export const Floor6 = () => {
             }}
             source1={r1}
             source2={r1g}
+            source3={r1r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 1201,
@@ -97,6 +106,8 @@ export const Floor6 = () => {
             }}
             source1={r2}
             source2={r2g}
+            source3={r2r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 872,
@@ -111,6 +122,8 @@ export const Floor6 = () => {
             }}
             source1={r3}
             source2={r3g}
+            source3={r3r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 454,
@@ -121,6 +134,8 @@ export const Floor6 = () => {
             alt={"logo1"}
             source1={r4}
             source2={r4g}
+            source3={r4r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               left: 148,
@@ -131,6 +146,7 @@ export const Floor6 = () => {
       </Row>
 
       <CellData {...cellData} />
+      {isOpen && <Popup {...cellData} handleClose={togglePopup} />}
     </>
   );
 };

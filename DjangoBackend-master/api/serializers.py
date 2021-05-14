@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Articles, Notes, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
+from .models import AlarmChanges, Articles, Notes, Cell, CellAlarms1, CellAlarms2, CellAlarms3, CellAlarms4, CellAlarms5, CellAlarms6
 from django.contrib.auth.models import User
 from rest_framework.authtoken.views import Token
 
@@ -59,6 +59,12 @@ class CellAlarms6Serializer(serializers.ModelSerializer):
     class Meta:
         model = CellAlarms6
         fields = ['Name', 'Date', 'Floor', 'cellID', 'Status']
+
+
+class AlarmChangesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AlarmChanges
+        fields = ['User', 'Date', 'ResetReason', 'Floor', 'cellID']
 
 
 class UserSerializer(serializers.ModelSerializer):

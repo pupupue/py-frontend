@@ -26,19 +26,6 @@ function App() {
   let history = useHistory();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/articles/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Token ${token["mytoken"]}`,
-      },
-    })
-      .then((resp) => resp.json())
-      .then((resp) => setArticles(resp))
-      .catch((error) => console.log(error));
-  }, []);
-
-  useEffect(() => {
     if (!token["mytoken"]) {
       history.push("/App/login");
       //window.location.href = '/'

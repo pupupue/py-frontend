@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import NotesViewSet, ArticleViewSet, UserViewSet, CellAlarms1ViewSet, CellAlarms2ViewSet, CellAlarms3ViewSet, CellAlarms4ViewSet, CellAlarms5ViewSet, CellAlarms6ViewSet, CellViewSet
+from .views import AlarmChangesViewSet, NotesViewSet, ArticleViewSet, UserViewSet, CellAlarms1ViewSet, CellAlarms2ViewSet, CellAlarms3ViewSet, CellAlarms4ViewSet, CellAlarms5ViewSet, CellAlarms6ViewSet, CellViewSet
 from rest_framework.routers import DefaultRouter
 
 #article_list, article_details, ArticleList, ArticleDetails
@@ -8,6 +8,7 @@ router = DefaultRouter()
 router.register('articles', ArticleViewSet, basename='articles')
 router.register('notes', NotesViewSet, basename='notes')
 router.register('cell', CellViewSet, basename='cell')
+router.register('AlarmChanges', AlarmChangesViewSet, basename='AlarmsChanges')
 router.register('cellAlarms1', CellAlarms1ViewSet, basename='cellAlarms1')
 router.register('cellAlarms2', CellAlarms2ViewSet, basename='cellAlarms2')
 router.register('cellAlarms3', CellAlarms3ViewSet, basename='cellAlarms3')

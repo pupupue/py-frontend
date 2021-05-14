@@ -8,6 +8,7 @@ import { Row } from "../UI/Row";
 //Middle
 import bottom from "../Restes_bildes/balts.png";
 import bottom_g from "../Restes_bildes/zals.png";
+import bottom_r from "../Restes_bildes/sarkans.bmp";
 //Upper middle
 import k1 from "../Restes_bildes/kreisa1.png";
 import k2 from "../Restes_bildes/kreisa2.png";
@@ -17,6 +18,10 @@ import k1g from "../Restes_bildes/3stavs/kreisa1g.png";
 import k2g from "../Restes_bildes/3stavs/kreisa2g.png";
 import k3g from "../Restes_bildes/3stavs/kreisa_istaois_3g.png";
 import k4g from "../Restes_bildes/3stavs/kreisa3g.png";
+import k1r from "../Restes_bildes/3stavs/kreisa1r.png";
+import k2r from "../Restes_bildes/3stavs/kreisa2r.png";
+import k3r from "../Restes_bildes/3stavs/kreisa_istaois_3r.png";
+import k4r from "../Restes_bildes/3stavs/kreisa3r.png";
 //Lower left
 import kl1 from "../Restes_bildes/kreisa_leja_2.png";
 import kl2 from "../Restes_bildes/kreisa_leja_3.png";
@@ -30,6 +35,12 @@ import kl3g from "../Restes_bildes/3stavs/kreisa_leja_4g.png";
 import kl4g from "../Restes_bildes/3stavs/kreisa_leja_5g.png";
 import kl5g from "../Restes_bildes/3stavs/kreisa_leja_pedejaisg.png";
 import kl6g from "../Restes_bildes/3stavs/kreisa_apaksa_smallg.png";
+import kl1r from "../Restes_bildes/3stavs/kreisa_leja_2r.png";
+import kl2r from "../Restes_bildes/3stavs/kreisa_leja_3r.png";
+import kl3r from "../Restes_bildes/3stavs/kreisa_leja_4r.png";
+import kl4r from "../Restes_bildes/3stavs/kreisa_leja_5r.png";
+import kl5r from "../Restes_bildes/3stavs/kreisa_leja_pedejaisr.png";
+import kl6r from "../Restes_bildes/3stavs/kreisa_apaksa_smallr.png";
 //upper left
 import ka1 from "../Restes_bildes/kreisa_augsa_3.png";
 import ka2 from "../Restes_bildes/kreisa_augsa_2.png";
@@ -37,11 +48,16 @@ import ka3 from "../Restes_bildes/kreisa_augsa_pedeja.png";
 import ka1g from "../Restes_bildes/3stavs/kreisa_augsa_3g.png";
 import ka2g from "../Restes_bildes/3stavs/kreisa_augsa_2g.png";
 import ka3g from "../Restes_bildes/3stavs/kreisa_augsa_pedejag.png";
+import ka1r from "../Restes_bildes/3stavs/kreisa_augsa_3r.png";
+import ka2r from "../Restes_bildes/3stavs/kreisa_augsa_2r.png";
+import ka3r from "../Restes_bildes/3stavs/kreisa_augsa_pedejar.png";
 //upper middle right
 import l1 from "../Restes_bildes/laba_1.png";
 import l2 from "../Restes_bildes/laba2.png";
 import l1g from "../Restes_bildes/3stavs/laba_1g.png";
 import l2g from "../Restes_bildes/3stavs/laba2g.png";
+import l1r from "../Restes_bildes/3stavs/laba_1r.png";
+import l2r from "../Restes_bildes/3stavs/laba2r.png";
 //lower right
 import ll1 from "../Restes_bildes/laba_leja_1.png";
 import ll2 from "../Restes_bildes/laba_leja_2.png";
@@ -55,6 +71,12 @@ import ll3g from "../Restes_bildes/3stavs/laba_leja_3g.png";
 import ll4g from "../Restes_bildes/3stavs/laba_leja_4g.png";
 import ll5g from "../Restes_bildes/3stavs/laba_leja_5g.png";
 import ll6g from "../Restes_bildes/3stavs/laba_apaksa_smallg.png";
+import ll1r from "../Restes_bildes/3stavs/laba_leja_1r.png";
+import ll2r from "../Restes_bildes/3stavs/laba_leja_2r.png";
+import ll3r from "../Restes_bildes/3stavs/laba_leja_3r.png";
+import ll4r from "../Restes_bildes/3stavs/laba_leja_4r.png";
+import ll5r from "../Restes_bildes/3stavs/laba_leja_5r.png";
+import ll6r from "../Restes_bildes/3stavs/laba_apaksa_smallr.png";
 //upper right
 import la1 from "../Restes_bildes/laba_augsa_1.png";
 import la2 from "../Restes_bildes/laba_augsa_2.png";
@@ -62,6 +84,9 @@ import la3 from "../Restes_bildes/laba_augsa_3.png";
 import la1g from "../Restes_bildes/3stavs/laba_augsa_1g.png";
 import la2g from "../Restes_bildes/3stavs/laba_augsa_2g.png";
 import la3g from "../Restes_bildes/3stavs/laba_augsa_3g.png";
+import la1r from "../Restes_bildes/3stavs/laba_augsa_1r.png";
+import la2r from "../Restes_bildes/3stavs/laba_augsa_2r.png";
+import la3r from "../Restes_bildes/3stavs/laba_augsa_3r.png";
 
 export const Floor2 = () => {
   const param = useParams();
@@ -84,7 +109,7 @@ export const Floor2 = () => {
       .then((resp) => resp.json())
       .then((resp) => setCellDataArray(resp))
       .catch((error) => console.log(error));
-  }, []);
+  });
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
@@ -108,6 +133,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -123,6 +150,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -138,6 +167,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -153,6 +184,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -168,6 +201,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -183,6 +218,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -198,6 +235,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -213,6 +252,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -228,6 +269,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -243,6 +286,8 @@ export const Floor2 = () => {
             }}
             source1={bottom}
             source2={bottom_g}
+            source3={bottom_r}
+            clicked={togglePopup}
             styleProps={{
               ...styleProps,
               transform: "scale(0.7)",
@@ -259,6 +304,8 @@ export const Floor2 = () => {
             }}
             source1={k1}
             source2={k1g}
+            source3={k1r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 645, top: 200 }}
           />
           <IstabasAttels
@@ -269,6 +316,8 @@ export const Floor2 = () => {
             }}
             source1={k2}
             source2={k2g}
+            source3={k2r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 615, top: 200 }}
           />
           <IstabasAttels
@@ -279,6 +328,8 @@ export const Floor2 = () => {
             }}
             source1={k3}
             source2={k3g}
+            source3={k3r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 542, top: 200 }}
           />
           <IstabasAttels
@@ -289,6 +340,8 @@ export const Floor2 = () => {
             }}
             source1={k4}
             source2={k4g}
+            source3={k4r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 440, top: 200 }}
           />
           <IstabasAttels
@@ -299,6 +352,8 @@ export const Floor2 = () => {
             }}
             source1={kl1}
             source2={kl1g}
+            source3={kl1r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 378, top: 257 }}
           />
           <IstabasAttels
@@ -309,6 +364,8 @@ export const Floor2 = () => {
             }}
             source1={kl2}
             source2={kl2g}
+            source3={kl2r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 330, top: 262 }}
           />
           <IstabasAttels
@@ -319,6 +376,8 @@ export const Floor2 = () => {
             }}
             source1={kl3}
             source2={kl3g}
+            source3={kl3r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 293, top: 262 }}
           />
           <IstabasAttels
@@ -329,6 +388,8 @@ export const Floor2 = () => {
             }}
             source1={kl4}
             source2={kl4g}
+            source3={kl4r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 220, top: 262 }}
           />
           <IstabasAttels
@@ -339,6 +400,8 @@ export const Floor2 = () => {
             }}
             source1={kl5}
             source2={kl5g}
+            source3={kl5r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 156, top: 250 }}
           />
           <IstabasAttels
@@ -349,6 +412,8 @@ export const Floor2 = () => {
             }}
             source1={kl6}
             source2={kl6g}
+            source3={kl6r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 194, top: 250 }}
           />
           <IstabasAttels
@@ -359,6 +424,8 @@ export const Floor2 = () => {
             cellData={cellDataArray.filter((cell) => cell.cellID === "26")[0]} //7
             source1={ka1}
             source2={ka1g}
+            source3={ka1r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 303, top: 127 }}
           />
           <IstabasAttels
@@ -369,6 +436,8 @@ export const Floor2 = () => {
             }}
             source1={ka2}
             source2={ka2g}
+            source3={ka2r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 220, top: 127 }}
           />
           <IstabasAttels
@@ -379,6 +448,8 @@ export const Floor2 = () => {
             }}
             source1={ka3}
             source2={ka3g}
+            source3={ka3r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 156, top: 127 }}
           />
           <IstabasAttels
@@ -389,6 +460,8 @@ export const Floor2 = () => {
             }}
             source1={l1}
             source2={l1g}
+            source3={l1r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1000, top: 200 }}
           />
           <IstabasAttels
@@ -399,6 +472,8 @@ export const Floor2 = () => {
             }}
             source1={l2}
             source2={l2g}
+            source3={l2r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1049, top: 200 }}
           />
           <IstabasAttels
@@ -409,6 +484,8 @@ export const Floor2 = () => {
             }}
             source1={ll1}
             source2={ll1g}
+            source3={ll1r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1143, top: 255 }}
           />
           <IstabasAttels
@@ -419,6 +496,8 @@ export const Floor2 = () => {
             }}
             source1={ll2}
             source2={ll2g}
+            source3={ll2r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1205, top: 260 }}
           />
           <IstabasAttels
@@ -429,6 +508,8 @@ export const Floor2 = () => {
             }}
             source1={ll3}
             source2={ll3g}
+            source3={ll3r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1259, top: 260 }}
           />
           <IstabasAttels
@@ -439,6 +520,8 @@ export const Floor2 = () => {
             }}
             source1={ll5}
             source2={ll5g}
+            source3={ll6r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
@@ -449,6 +532,8 @@ export const Floor2 = () => {
             }}
             source1={ll4}
             source2={ll4g}
+            source3={ll4r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1293, top: 260 }}
           />
 
@@ -460,6 +545,8 @@ export const Floor2 = () => {
             }}
             source1={ll6}
             source2={ll6g}
+            source3={ll6r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1355, top: 248 }}
           />
           <IstabasAttels
@@ -470,6 +557,8 @@ export const Floor2 = () => {
             }}
             source1={la1}
             source2={la1g}
+            source3={la1r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1143, top: 127 }}
           />
           <IstabasAttels
@@ -480,6 +569,8 @@ export const Floor2 = () => {
             }}
             source1={la2}
             source2={la2g}
+            source3={la2r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1280, top: 127 }}
           />
           <IstabasAttels
@@ -490,27 +581,17 @@ export const Floor2 = () => {
             }}
             source1={la3}
             source2={la3g}
+            source3={la3r}
+            clicked={togglePopup}
             styleProps={{ ...styleProps, left: 1360, top: 127 }}
           />
         </CardBasic>
       </Row>
-
       <Row>
         <CellData {...cellData} />
         <CardBasic>Informacija par celliem zem floor plan</CardBasic>
       </Row>
-      {isOpen && (
-        <Popup
-          content={
-            <>
-              <b>Design your Popup</b>
-              <p>as</p>
-              <button>Test button</button>
-            </>
-          }
-          handleClose={togglePopup}
-        />
-      )}
+      {isOpen && <Popup {...cellData} handleClose={togglePopup} />}
     </>
   );
 };

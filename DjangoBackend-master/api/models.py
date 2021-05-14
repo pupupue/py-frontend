@@ -51,7 +51,7 @@ class CellAlarms1(models.Model):
 
 class CellAlarms2(models.Model):
     Name = models.CharField("Name", max_length=20)
-    Date = models.CharField("Date", max_length=20)
+    Date = models.DateField()
     Floor = models.CharField("Floor", max_length=20)
     cellID = models.CharField("cellID", max_length=20)
     Status = models.CharField("Status", max_length=20)
@@ -62,7 +62,7 @@ class CellAlarms2(models.Model):
 
 class CellAlarms3(models.Model):
     Name = models.CharField("Name", max_length=20)
-    Date = models.CharField("Date", max_length=20)
+    Date = models.DateField()
     Floor = models.CharField("Floor", max_length=20)
     cellID = models.CharField("cellID", max_length=20)
     Status = models.CharField("Status", max_length=20)
@@ -73,7 +73,7 @@ class CellAlarms3(models.Model):
 
 class CellAlarms4(models.Model):
     Name = models.CharField("Name", max_length=20)
-    Date = models.CharField("Date", max_length=20)
+    Date = models.DateField()
     Floor = models.CharField("Floor", max_length=20)
     cellID = models.CharField("cellID", max_length=20)
     Status = models.CharField("Status", max_length=20)
@@ -84,7 +84,7 @@ class CellAlarms4(models.Model):
 
 class CellAlarms5(models.Model):
     Name = models.CharField("Name", max_length=20)
-    Date = models.CharField("Date", max_length=20)
+    Date = models.DateField()
     Floor = models.CharField("Floor", max_length=20)
     cellID = models.CharField("cellID", max_length=20)
     Status = models.CharField("Status", max_length=20)
@@ -95,10 +95,32 @@ class CellAlarms5(models.Model):
 
 class CellAlarms6(models.Model):
     Name = models.CharField("Name", max_length=20)
-    Date = models.CharField("Date", max_length=20)
+    Date = models.DateField()
     Floor = models.CharField("Floor", max_length=20)
     cellID = models.CharField("cellID", max_length=20)
     Status = models.CharField("Status", max_length=20)
 
     def __str__(self):
         return self.Name
+
+
+class AlarmChanges(models.Model):
+    User = models.CharField("User", max_length=20)
+    Date = models.DateField()
+    ResetReason = models.CharField("ResetReason", max_length=200)
+    Floor = models.CharField("Floor", max_length=20)
+    cellID = models.CharField("cellID", max_length=20)
+
+    def __str__(self):
+        return self.User
+
+
+class SystemInformation(models.Model):
+    WorkingDevices = models.IntegerField("WorkingDevices")
+    MaintnanceDevices = models.IntegerField("MaintnaceDevices")
+    DisabledDevices = models.IntegerField("DisabledDevices")
+    ServerStatus = models.CharField("ServerStatus", max_length=20)
+    AlertStatus = models.CharField("AlertStatus", max_length=20)
+
+    def __str__(self):
+        return self.User

@@ -53,6 +53,7 @@ import nod5 from "../Restes_bildes/1stavs/logi.png";
 
 export const Floor1 = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAlarm, setIsAlarm] = useState(false);
   const [cellDataArray, setCellDataArray] = useState([]);
   const [cellData, setCellData] = useState({
     Name: "",
@@ -71,7 +72,7 @@ export const Floor1 = () => {
       .then((resp) => resp.json())
       .then((resp) => setCellDataArray(resp))
       .catch((error) => console.log(error));
-  }, []);
+  });
 
   const styleProps = {
     position: "absolute",
@@ -79,9 +80,18 @@ export const Floor1 = () => {
     transform: "scale(1)",
   }; //te gan jau row vajadzetu aizstat ar kadu kas paliek pa visu ekrānu
 
+  // export const AlarmContext = React.createContext([]);
+
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
+  // const checkAlarm = () => {
+  //   {
+  //     cellDataArray.filter((cell) => cell.Status === "DOWN")[0] !== null &&
+  //       setIsAlarm(true);
+  //   }
+  // };
+
   return (
     <>
       <Row>
@@ -91,7 +101,7 @@ export const Floor1 = () => {
             style={{ height: 490, width: 1120, backgroundColor: "white" }}
           ></div>
           <IstabasAttels
-            cellData={cellDataArray.filter((cell) => cell.cellID == "7")[0]} //7
+            cellData={cellDataArray.filter((cell) => cell.cellID === "7")[0]} //7
             alt={"logo1"} /**Done */
             source1={ka1}
             source2={ka1g}
@@ -108,7 +118,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /**Done */
-            cellData={cellDataArray.filter((cell) => cell.cellID == "8")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "8")[0]}
             source1={kl1}
             source2={kl1g}
             source3={kl1r}
@@ -124,7 +134,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels /*done*/
             alt={"logo1"}
-            cellData={cellDataArray.filter((cell) => cell.cellID == "2")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "2")[0]}
             source1={ll1}
             source2={ll1g}
             source3={ll1r}
@@ -140,7 +150,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /*done*/
-            cellData={cellDataArray.filter((cell) => cell.cellID == "1")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "1")[0]}
             source1={la2}
             source2={la2g}
             source3={la2r}
@@ -156,7 +166,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /*Done*/
-            cellData={cellDataArray.filter((cell) => cell.cellID == "3")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "3")[0]}
             onHover={(cellData) => {
               setCellData(cellData);
             }}
@@ -172,7 +182,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            cellData={cellDataArray.filter((cell) => cell.cellID == "5")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "5")[0]}
             onHover={(cellData) => {
               setCellData(cellData);
             }}
@@ -188,7 +198,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"} /**Done */
-            cellData={cellDataArray.filter((cell) => cell.cellID == "4")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "4")[0]}
             onHover={(cellData) => {
               setCellData(cellData);
             }}
@@ -204,7 +214,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo1"}
-            cellData={cellDataArray.filter((cell) => cell.cellID == "6")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "6")[0]}
             onHover={(cellData) => {
               setCellData(cellData);
             }}
@@ -220,7 +230,7 @@ export const Floor1 = () => {
           />
           <IstabasAttels
             alt={"logo9"} /**Done */
-            cellData={cellDataArray.filter((cell) => cell.cellID == "9")[0]}
+            cellData={cellDataArray.filter((cell) => cell.cellID === "9")[0]}
             source1={r9}
             source2={r9g}
             source3={r9r}
