@@ -34,7 +34,7 @@ export const Routes = ({ auth }) => {
       <PrivateRoute exact path="/App/notes" component={Notes} auth={auth} />
       <PrivateRoute
         exact
-        path="/App/maintenance"
+        path="/App/Maintenance"
         component={Maintenance}
         auth={auth}
       />

@@ -72,7 +72,7 @@ export const Floor1 = () => {
       .then((resp) => resp.json())
       .then((resp) => setCellDataArray(resp))
       .catch((error) => console.log(error));
-  });
+  }, []);
 
   const styleProps = {
     position: "absolute",

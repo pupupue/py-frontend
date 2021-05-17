@@ -26,7 +26,7 @@ export const Dashboard = ({ children }) => {
       .then((resp) => resp.json())
       .then((resp) => setNotes(resp))
       .catch((error) => console.log(error));
-  });
+  }, [newNote]);
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/AlarmChanges/", {
       method: "GET",
@@ -37,18 +37,8 @@ export const Dashboard = ({ children }) => {
       .then((resp) => resp.json())
       .then((resp) => setAlarmsChanges(resp))
       .catch((error) => console.log(error));
-  });
+  }, []);
 
-  const deleteBtn = (note) => {
-    const new_notes = note.filter((mynote) => {
-      if (mynote.id === note.id) {
-        return false;
-      }
-      return true;
-    });
-
-    setNotes(new_notes);
-  };
   const editBtn = (note) => {
     setEditNote(note);
   };
@@ -119,12 +109,7 @@ export const Dashboard = ({ children }) => {
             </button>
           </div>
           <br></br>
-          <NotesList
-            sort={sortType}
-            notes={notes}
-            editBtn={editBtn}
-            deleteBtn={deleteBtn}
-          />
+          <NotesList notes={notes} />
         </CardBasic>
         <CardBasic>
           <h2 style={{ fontSize: "3rem" }}>

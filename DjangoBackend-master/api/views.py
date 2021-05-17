@@ -3,6 +3,7 @@ from .serializers import AlarmChangesSerializer, NotesSerializer, ArticleSeriali
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 
 
@@ -77,6 +78,11 @@ class UserViewSet(viewsets.ModelViewSet):
 class AlarmChangesViewSet(viewsets.ModelViewSet):
     queryset = AlarmChanges.objects.all()
     serializer_class = AlarmChangesSerializer
+
+
+def function(request):
+    print("function is excwcutes")
+    return HttpResponse("""""")
 
 
 '''

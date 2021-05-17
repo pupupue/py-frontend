@@ -89,7 +89,6 @@ import la2r from "../Restes_bildes/3stavs/laba_augsa_2r.png";
 import la3r from "../Restes_bildes/3stavs/laba_augsa_3r.png";
 
 export const Floor2 = () => {
-  const param = useParams();
   const [isOpen, setIsOpen] = useState(false);
   const [cellDataArray, setCellDataArray] = useState([]);
   const [cellData, setCellData] = useState({
@@ -109,7 +108,7 @@ export const Floor2 = () => {
       .then((resp) => resp.json())
       .then((resp) => setCellDataArray(resp))
       .catch((error) => console.log(error));
-  });
+  }, []);
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };

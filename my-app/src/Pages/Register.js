@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import APIService from "../APIService";
 import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
+import "./register.css";
+import { RiAlarmWarningLine, RiAlarmWarningFill } from "react-icons/ri";
 
 export const Register = (props) => {
   const [username, setUsername] = useState("");
@@ -26,11 +28,10 @@ export const Register = (props) => {
       .catch((error) => console.log(error));
   };
   return (
-    <div className="App">
+    <div className="base-container">
       <br />
       <br />
       <h1>Please Register </h1>
-
       <br />
       <br />
 
@@ -84,20 +85,18 @@ export const Register = (props) => {
           type="first_name"
           className="form-control"
           id="first_name"
-          placeholder="Please Enter Password"
+          placeholder="Please Enter First name"
           value={first_name}
           onChange={(e) => setFirstName(e.target.value)}
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="FirstName" className="form-label">
-          Last Name
-        </label>
+      <div>
+        <label htmlFor="FirstName">Last Name</label>
         <input
           type="last_name"
           className="form-control"
           id="last_name"
-          placeholder="Please Enter Password"
+          placeholder="Please Enter your Last name"
           value={last_name}
           onChange={(e) => setLastName(e.target.value)}
         />
