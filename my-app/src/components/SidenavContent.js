@@ -5,12 +5,13 @@ import { useHistory } from "react-router-dom";
 import { CardBasic_user } from "../components/CardBasic_user";
 import noPhoto from "../Restes_bildes/no_image.png";
 import { useCookies } from "react-cookie";
+import APIService from "../APIService";
 import { AlarmContext } from "../Pages/Floor1";
 
 export const SidenavContent = () => {
   const history = useHistory();
   const [username, setUsername] = useCookies(["myusername"]);
-  // const [cellDataArray1, setCellDataArray1] = useState([]);
+  const [userArray, setUserArray] = useState([]);
   // const [cellDataArray2, setCellDataArray2] = useState([]);
   // const [cellDataArray3, setCellDataArray3] = useState([]);
   // const [cellDataArray4, setCellDataArray4] = useState([]);
@@ -23,119 +24,30 @@ export const SidenavContent = () => {
   // const [isAlarm5, setIsAlarm5] = useState(false);
   // const [isAlarm6, setIsAlarm6] = useState(false);
 
-  // const [cellData, setCellData] = useState({
-  //   Name: "",
-  //   Date: "",
-  //   Floor: "",
-  //   cellID: "",
-  //   Status: "",
-  // });
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    first_name: "",
+    last_name: "",
+    groups: [],
+  });
 
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/api/cellAlarms1/", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((resp) => setCellDataArray1(resp))
-  //     .then((resp) => checkAlarm())
-  //     .catch((error) => console.log(error));
-  // }, []);
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/api/cellAlarms2/", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((resp) => setCellDataArray2(resp))
-  //     .then((resp) => checkAlarm())
-  //     .catch((error) => console.log(error));
-  // }, []);
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/api/cellAlarms3/", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((resp) => setCellDataArray3(resp))
-  //     .then((resp) => checkAlarm())
-  //     .catch((error) => console.log(error));
-  // }, []);
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/api/cellAlarms4/", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((resp) => setCellDataArray4(resp))
-  //     .then((resp) => checkAlarm())
-  //     .catch((error) => console.log(error));
-  // }, []);
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/api/cellAlarms5/", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((resp) => setCellDataArray5(resp))
-  //     .then((resp) => checkAlarm())
-  //     .catch((error) => console.log(error));
-  // }, []);
-  // useEffect(() => {
-  //   fetch("http://127.0.0.1:8000/api/cellAlarms6/", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then((resp) => setCellDataArray6(resp))
-  // //     .then((resp) => checkAlarm())
-  // //     .catch((error) => console.log(error));
-  // // }, []);
-  // console.log(cellDataArray6.filter((cell) => cell.Status === "DOWN")[0]);
-  // const checkAlarm = () => {
-  //   {
-  //     cellDataArray1.filter((cell) => cell.Status === "DOWN")[0] !== undefined
-  //       ? setIsAlarm1(true)
-  //       : setIsAlarm1(false);
-  //   }
-  //   {
-  //     cellDataArray2.filter((cell) => cell.Status === "DOWN")[0] !== undefined
-  //       ? setIsAlarm2(true)
-  //       : setIsAlarm2(false);
-  //   }
-  //   {
-  //     cellDataArray3.filter((cell) => cell.Status === "DOWN")[0] !== undefined
-  //       ? setIsAlarm3(true)
-  //       : setIsAlarm3(false);
-  //   }
-  //   {
-  //     cellDataArray4.filter((cell) => cell.Status === "DOWN")[0] !== undefined
-  //       ? setIsAlarm4(true)
-  //       : setIsAlarm4(false);
-  //   }
-  //   {
-  //     cellDataArray5.filter((cell) => cell.Status === "DOWN")[0] !== undefined
-  //       ? setIsAlarm5(true)
-  //       : setIsAlarm5(false);
-  //   }
-  //   {
-  //     cellDataArray6.filter((cell) => cell.Status === "DOWN")[0] !== undefined
-  //       ? setIsAlarm6(true)
-  //       : setIsAlarm6(false);
-  //   }
-  // };
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/users/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((resp) => setUserArray(resp))
+      .catch((error) => console.log(error));
+  }, []);
+  useEffect(() => {
+    setUserData(
+      userArray.filter((user) => user.username === username["myusername"])[0]
+    );
+  }, [setUserArray]);
 
   return (
     <Sidenav>
@@ -171,9 +83,8 @@ export const SidenavContent = () => {
         onClick={() => history.push("/App/Maintenance")}
       />
       <CardBasic_user>
-        {" "}
         <h4>Username: {username["myusername"]}</h4>
-        <h4>Security level: </h4>
+        {/* <h4>Security level: {userData.groups} </h4> */}
         <img
           style={{ Transform: "scale(0.6)" }}
           src={noPhoto}

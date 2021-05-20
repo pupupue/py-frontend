@@ -7,15 +7,15 @@ import { useAlert } from "react-alert";
 export const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [test, setTest] = useState([]);
   const [pasWrong, setPasWrong] = useState(false);
   const [token, setToken] = useCookies(["mytoken"]);
   const [logedUser, setLogedUser] = useCookies(["myusername"]);
   const [securityLevel, setSecurityLevel] = useCookies(["mysecuritylevel"]);
-  const [isLogin, setLogin] = useState(true);
   let history = useHistory();
 
   useEffect(() => {
-    if (token["mytoken"]) {
+    if (token["mytoken"] !== undefined) {
       if (token["mytoken"] === undefined) {
         //console.log("wrong");
         //alert.show("Wrong Password!");

@@ -60,6 +60,16 @@ export default class APIService {
     }).then((resp) => resp.json());
   }
 
+  static GetUsers(body) {
+    return fetch("http://127.0.0.1:8000/api/users/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }).then((resp) => resp.json());
+  }
+
   static CellStatus(cellid, token) {
     return fetch(`http://127.0.0.1:8000/api/cellAlarms/${cellid}/`, {
       method: "POST",
